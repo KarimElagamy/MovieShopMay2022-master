@@ -64,7 +64,8 @@ namespace MovieShopAPI.Controllers
 
         private string CreateJwtToken(UserModel user)
         {
-            // create the claims 
+            // create the claims
+
 
             var claims = new List<Claim>
             {
@@ -73,7 +74,8 @@ namespace MovieShopAPI.Controllers
                 new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
                 new Claim("Country", "USA"),
-                new Claim("language", "english")
+                new Claim("language", "english"),
+                new Claim("isAdmin", (user.Id == 49822) ? "true" : "false")
             };
 
             var identityClaims = new ClaimsIdentity();

@@ -1,4 +1,5 @@
 ﻿using System;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 
 namespace ApplicationCore.Contracts.Services
@@ -11,6 +12,8 @@ namespace ApplicationCore.Contracts.Services
 	   Task< MovieDetailsModel>	GetMovieDetails(int id);
 
 		Task< PagedResultSetModel<MovieCardModel> > GetMoviesByGenre(int genreId, int pageSize = 30, int pageNumber = 1);
+
+		Task<bool> AddMovie(MovieCardModel movie);
 	}
 }
 

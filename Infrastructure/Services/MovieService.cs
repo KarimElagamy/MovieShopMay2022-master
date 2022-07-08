@@ -1,6 +1,7 @@
 ﻿using System;
 using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 
 namespace Infrastructure.Services
@@ -79,6 +80,20 @@ namespace Infrastructure.Services
             }
 
             return movieCards;
+        }
+
+        public async Task<bool> AddMovie(MovieCardModel movieCard)
+        {
+            var movie = new Movie();
+            movie.Id = movieCard.Id;
+            movie.Title = movieCard.Title;
+            movie.PosterUrl = movieCard.PosterUrl;
+            var addedMovie = await _movieRepository.Add(movie);
+            if (addedMovie != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
